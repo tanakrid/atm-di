@@ -1,4 +1,4 @@
-package ATMModel;
+package atm_annotation_config;
 
 /**
  * A bank customer with a checking and a savings account.

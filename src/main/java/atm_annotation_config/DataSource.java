@@ -1,7 +1,10 @@
-package ATMModel;
+package atm_annotation_config;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,7 +19,8 @@ public class DataSource {
     /**
      * @param filename the name of the customer file
      */
-    public DataSource(String filename) {
+    @Autowired
+    public DataSource(@Value("customers.txt") String filename) {
         this.filename = filename;
     }
 

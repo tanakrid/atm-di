@@ -1,4 +1,4 @@
-package ATMModel;
+package atm_annotation_config;
 
 import org.springframework.stereotype.Component;
 

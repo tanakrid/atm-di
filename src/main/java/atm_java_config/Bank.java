@@ -1,4 +1,4 @@
-package atm_annotation_config;
+package atm_java_config;
 
 import org.springframework.stereotype.Component;
 
@@ -12,7 +12,7 @@ import java.util.Map;
 @Component
 public class Bank {
 
-   private Map<Integer,Customer> customers;
+   private Map<Integer, Customer> customers;
    private DataSource dataSource;
 
    /**
@@ -20,7 +20,7 @@ public class Bank {
     */
    public Bank(DataSource dataSource) {
       this.dataSource = dataSource;
-      customers = new HashMap<Integer,Customer>();
+      customers = new HashMap<Integer, Customer>();
    }
 
    public void initializeCustomers() throws IOException {

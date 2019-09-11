@@ -1,5 +1,6 @@
-package atm_annotation_config;
+package atm_java_config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -21,6 +22,7 @@ public class ATM {
 	/**
      * Constructs an ATM for a bank.
 	 */
+	@Autowired
 	public ATM(Bank bank) {
 		this.bank = bank;
 		this.customerNumber = -1;

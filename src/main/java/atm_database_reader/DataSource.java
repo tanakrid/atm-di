@@ -1,20 +1,21 @@
-package atm_XML_config;
+package atm_database_reader;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
 public class DataSource {
 
-    private String filename;
+    private String databaseName;
 
     /**
-     * @param filename the name of the customer file
+     * @param databaseName the name of the customer file
      */
-    public DataSource(String filename) {
-        this.filename = filename;
+    public DataSource(String databaseName) {
+        this.databaseName = databaseName;
     }
 
     /**
@@ -23,16 +24,31 @@ public class DataSource {
      */
     public Map<Integer, Customer> readCustomers() throws IOException {
         Map<Integer, Customer> customers = new HashMap<Integer, Customer>();
+        try {
+            Class.forName("org.sqlite.JDBC");
+            String dbURL = "jdbc:sqlite:"+this.databaseName;
+            Connection conn = DriverManager.getConnection(dbURL);
+            if (conn != null){
+                DatabaseMetaData dm = (DatabaseMetaData) conn.getMetaData();
+                String query = "Select * from customers";
+                Statement statement = conn.createStatement();
+                ResultSet resultSet = statement.executeQuery(query);
 
-        Scanner in = new Scanner(new FileReader(filename));
-        while (in.hasNext()) {
-            int number = in.nextInt();
-            int pin = in.nextInt();
-            double currentBalance = in.nextDouble();
-            Customer c = new Customer(number, pin, currentBalance);
-            customers.put(c.getCustomerNumber(), c);
+                while(resultSet.next()){
+                    int number = resultSet.getInt(1);
+                    int pin = resultSet.getInt(2);
+                    double currentBalance = resultSet.getDouble(3);
+                    Customer c = new Customer(number, pin, currentBalance);
+                    customers.put(c.getCustomerNumber(), c);
+                }
+                conn.close();
+                return customers;
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        in.close();
-        return customers;
+        return null;
     }
 }

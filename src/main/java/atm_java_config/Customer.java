@@ -1,4 +1,4 @@
-package atm_annotation_config;
+package atm_java_config;
 
 /**
  * A bank customer with a checking and a savings account.

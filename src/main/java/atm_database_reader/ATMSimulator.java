@@ -1,4 +1,4 @@
-package atm_XML_config;
+package atm_database_reader;
 
 import java.io.IOException;
 import java.util.Scanner;

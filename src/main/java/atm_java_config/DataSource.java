@@ -1,4 +1,4 @@
-package atm_annotation_config;
+package atm_java_config;
 
 import org.springframework.stereotype.Component;
 

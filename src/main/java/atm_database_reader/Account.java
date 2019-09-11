@@ -1,4 +1,4 @@
-package atm_XML_config;
+package atm_database_reader;
 
 /**
  * A bank account has a balance that can be changed by

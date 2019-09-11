@@ -1,4 +1,4 @@
-package ATMModel;
+package atm_annotation_config;
 
 /**
  * A bank account has a balance that can be changed by
