@@ -1,4 +1,6 @@
-package atm;
+package atm_annotation_config;
+
+import org.springframework.stereotype.Component;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -6,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+@Component
 public class DataSource {
 
     private String filename;
